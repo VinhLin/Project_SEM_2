@@ -1,5 +1,7 @@
 # Project_SEM_2
 Lab project Jetking SEM2
+bảng phân công công việc
+https://docs.google.com/spreadsheets/d/1Qv2cCKSXS4DtV4rxd2ezQ3oRR3AkluJIYRX271ewn3E/edit#gid=0
 
 ## Yêu cầu
 - Tạo kết nối **tunel** giữa *Tòa nhà A* và *Tòa nhà B*, để các PC giữa 2 tòa nhà có thể **ping** với nhau.

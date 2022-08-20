@@ -1,10 +1,12 @@
 # Project_SEM_2
 Lab project Jetking SEM2.
 
-Bảng phân công công việc.
+--------------------------------------------------------------------------------------
+## Bảng phân công công việc.
 
 https://docs.google.com/spreadsheets/d/1Qv2cCKSXS4DtV4rxd2ezQ3oRR3AkluJIYRX271ewn3E/edit#gid=0
 
+---------------------------------------------------------------------------------------
 ## Yêu cầu
 - Tạo kết nối **tunel** giữa *Tòa nhà A* và *Tòa nhà B*, để các PC giữa 2 tòa nhà có thể **ping** với nhau.
 - Các PC trong cả 2 tòa nhà đều truy cập được Internet.
@@ -45,7 +47,7 @@ https://docs.google.com/spreadsheets/d/1Qv2cCKSXS4DtV4rxd2ezQ3oRR3AkluJIYRX271ew
 | B	| IT			|	30 host		| 40	|	|
 
 
-
-
+----------------------------------------------------------------------------------------------------------------------------
+![Topology](https://github.com/VinhLin/Project_SEM_2/blob/main/Topology/Topology_V1.png)
 
 

@@ -25,6 +25,7 @@ https://docs.google.com/spreadsheets/d/1Qv2cCKSXS4DtV4rxd2ezQ3oRR3AkluJIYRX271ew
 - Cấu hình dự phòng cho **SW_Core** và **Router** của Tòa nhà B.
 - Thiết lập sao cho **Home_PC** có thể truy cập được **Web_Server**.
 - Thiết lập sao cho **Home_PC** có thể truy cập được **Database_Server**, thông qua **Tunel**.
+- Cấu hình sao cho **Router DHCP_Server** cấp IP cho cả *Tòa nhà A* và *Tòa nhà B*.
 - Cấu hình sao cho chỉ *phòng IT* và *phòng Giám đốc* có thể truy cập vào được *NAS_Server* của **Tòa nhà A**.
 
 
@@ -48,6 +49,6 @@ https://docs.google.com/spreadsheets/d/1Qv2cCKSXS4DtV4rxd2ezQ3oRR3AkluJIYRX271ew
 
 
 ----------------------------------------------------------------------------------------------------------------------------
-![Topology](https://github.com/VinhLin/Project_SEM_2/blob/main/Topology/Topology_V1.png)
+![Topology](https://github.com/VinhLin/Project_SEM_2/blob/main/Topology/Topology_Image.png)
 
 

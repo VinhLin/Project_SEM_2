@@ -38,20 +38,20 @@ https://docs.google.com/spreadsheets/d/1Qv2cCKSXS4DtV4rxd2ezQ3oRR3AkluJIYRX271ew
 ---------------------------------------------------------------------------------------------------------------------------
 ## Phân hoạch IP
 ### Phân hoạch dựa trên phòng ban và số nhân sự tối đa.
-|Tòa nhà| Phòng ban		| Số lượng nhân sự tối đa	| VLAN	| Lớp mạng		|
+|Tòa nhà| Phòng ban		| Số lượng truy cập tối đa	| VLAN	| Lớp mạng		|
 |-------|----------------------|------------------------------|-------|----------------------|
 | A	| Kỹ thuật lắp đặt (KT)|	30 người		| 10	|	|
 | A	| Showroom A		|	50 người		| 15	|	|
-| A	| Kho			|	3 người		| 20	|	|	
+| A	| Kho			|	3 người			| 20	|	|	
 | A	| R&D			|	10 người		| 25	|	|
 | B	| showroom B		|	50 người		| 30	|	|
 | B	| Marketing (MKT)	|	10 người		| 35	|	|
 | B	|Customer experience (CX)|	15 người		| 40	|	|
-| B	| Nhân sự (HR)		|	5 người		| 45	|	|
-| B	| Sales		|	30 người		| 50	|	|
-| B	| Guest		|	15 người		| 55	|	|
-| B	| Kế toán		|	5 người		| 60	|	|
-| B	| Giám đốc		|	5 người		| 65	|	|
+| B	| Nhân sự (HR)		|	5 người			| 45	|	|
+| B	| Sales			|	30 người		| 50	|	|
+| B	| Guest			|	15 người		| 55	|	|
+| B	| Kế toán		|	5 người			| 60	|	|
+| B	| Giám đốc		|	5 người			| 65	|	|
 | B	| IT			|	20 người		| 70	|	|
 
 ### Phân hoạch VLAN để bên IT quản lý.
@@ -68,4 +68,26 @@ https://docs.google.com/spreadsheets/d/1Qv2cCKSXS4DtV4rxd2ezQ3oRR3AkluJIYRX271ew
 ----------------------------------------------------------------------------------------------------------------------------
 ![Topology](https://github.com/VinhLin/Project_SEM_2/blob/main/Topology/Topology_Image.png)
 
+-----------------------------------------------------------------------------------------------------------------------------
+## Chi phí (Cost) dựa trên Topology
 
+| Tên sản phẩm			| Đơn giá trên một thiết bị	|	Link tham khảo	|
+|-------------------------------|-------------------------------|-----------------------|
+|Switch Cisco Layer 2 (24 port)	| 9,199,000 VND 		|[anphatpc](https://www.anphatpc.com.vn/switch-cisco-ws-c296024tc-s-24-port-combo_id18779.html)|
+|Router Cisco 1921		| 10,800,000 VND		|[tiki](https://tiki.vn/bo-dinh-tuyen-router-cisco-1921k9-2-ge-2-khe-cam-ehwic-512dram-ip-base-hang-chinh-hang-p50476546.html?spid=50476547&utm_source=google&utm_medium=cpc&utm_campaign=SEA_NBR_GGL_SMA_DTP_ALL_VN_ALL_UNK_UNK_C.ALL_X.10625984610_Y.106657549162_V.50476547_W.c_A.1392449951176_O.UNK&gclid=CjwKCAjwpKyYBhB7EiwAU2Hn2fcKlJeKL7HBcfheocsJq20K-oZTA6OmjWr_rWEpaN9Wu7ZlWtm77hoCEqoQAvD_BwE)|
+|Cisco WS-C3560-24TS-S Catalyst 3560 24Port| 24,200,000 VND	|[thietbimangcisco](https://thietbimangcisco.vn/bang-gia-switch-cisco-catalyst-3560-3650-3750x-3850-moi-nhat-2018-v-322-332-5237.html)|
+|PfSense Firewall C2358 2-Core 6 LAN| 17,558,250 VND ($750)	|[corpshadow](https://corpshadow.biz/pfsense/pffw2700?gclid=CjwKCAjwpKyYBhB7EiwAU2Hn2SzXTH5LaCkjXJ3_CowljskdRtPIWYGiF5hx1PIfakDovUTyXQ6P0xoCKN8QAvD_BwE)|
+
+
+|Tòa nhà | Số lượng		| Chi phí	|
+|--------|----------------------|---------------|
+|A	| 3 switch layer 2 	| 27,597,000 VND |
+|A	| 1 Switch Core		| 24,200,000 VND |
+|A	| 2 Router		| 21,600,000 VND |
+|B	| 6 Switch layer 2	| 55,194,000 VND |
+|B	| 2 Switch Core		| 48,400,000 VND |
+|B	| 2 Router		| 21,600,000 VND |
+|B	| 2 Firewall		| 35,122,500 VND |
+
+### Tổng chi phí của tòa A: 73,397,000 VND
+### Tổng chi phí của tòa B: 160,316,500 VND	

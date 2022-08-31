@@ -39,31 +39,31 @@ https://docs.google.com/spreadsheets/d/1Qv2cCKSXS4DtV4rxd2ezQ3oRR3AkluJIYRX271ew
 ## Phân hoạch IP
 ### Phân hoạch dựa trên phòng ban và số nhân sự tối đa.
 |Tòa nhà| Phòng ban		| Số lượng truy cập tối đa	| VLAN	| Lớp mạng		|
-|-------|----------------------|------------------------------|-------|----------------------|
-| A	| Kỹ thuật lắp đặt (KT)|	30 người		| 10	|	|
-| A	| Showroom A		|	50 người		| 15	|	|
-| A	| Kho			|	3 người			| 20	|	|	
-| A	| R&D			|	10 người		| 25	|	|
-| B	| showroom B		|	50 người		| 30	|	|
-| B	| Marketing (MKT)	|	10 người		| 35	|	|
-| B	|Customer experience (CX)|	15 người		| 40	|	|
-| B	| Nhân sự (HR)		|	5 người			| 45	|	|
-| B	| Sales			|	30 người		| 50	|	|
-| B	| Guest			|	15 người		| 55	|	|
-| B	| Kế toán		|	5 người			| 60	|	|
-| B	| Giám đốc		|	5 người			| 65	|	|
-| B	| IT			|	20 người		| 70	|	|
+|-------|----------------------|--------------------------------|-------|----------------------|
+| A	| Kỹ thuật lắp đặt (KT)|	30 người		| 10	|192.168.2.64/26|
+| A	| Showroom A		|	50 người		| 15	|192.168.2.0/26	|
+| A	| Kho			|	3 người		| 20	|192.168.2.144/29|	
+| A	| R&D			|	10 người		| 25	|192.168.2.128/28|
+| B	| showroom B		|	50 người		| 30	|192.168.0.0/26	|
+| B	| Marketing (MKT)	|	10 người		| 35	|192.168.0.224/28 |
+| B	|Customer experience (CX)|	15 người		| 40	|192.168.0.160/27 |
+| B	| Nhân sự (HR)		|	5 người		| 45	|192.168.0.240/28 |
+| B	| Sales			|	30 người		| 50	|192.168.0.64/26 |
+| B	| Guest			|	15 người		| 55	|192.168.0.128/27 |
+| B	| Kế toán		|	5 người		| 60	|192.168.1.216/29 |
+| B	| Giám đốc		|	5 người		| 65	|192.168.1.224/29 |
+| B	| IT			|	20 người		| 70	|192.168.0.192/27 |
 
 ### Phân hoạch VLAN để bên IT quản lý.
-|VLAN	|	Note			|	Số lượng host tối đa	|  Prefix	|
-|-------|-----------------------------|------------------------------|---------------|
-|98	|Quản lý Router		| [x]				| /24		|
-|99	|Quản lý Switch		| [x]				| /24		|
-|100	|Quản lý DHCP_Server		| 2 host			| /30 		|
-|101	|Quản lý Web_Server		| 2 host			| /30 		|
-|102	|Quản lý Database_Server	| 2 host			| /30 		|
-|103	|Quản lý Monitoring_Server	| 2 host			| /30 		|
-|104	|Quản lý NAS_Server		| 1 host			| /30 		|
+|VLAN	|	Note			|Số lượng host tối đa hiện tại|  Prefix	|
+|-------|-----------------------------|--------------------------------|------------------|
+|98	|Quản lý Router		| [x]				| 192.168.1.128/26 |
+|99	|Quản lý Switch		| [x]				| 192.168.1.0/25 |
+|100	|Quản lý DHCP_Server		| 2 host			| 192.168.1.232/30 |
+|101	|Quản lý Web_Server		| 2 host			| 192.168.1.192/29 |
+|102	|Quản lý Database_Server	| 2 host			| 192.168.1.200/29 |
+|103	|Quản lý Monitoring_Server	| 2 host			| 192.168.1.236/30 |
+|104	|Quản lý NAS_Server		| 1 host			| 192.168.1.208/29 |
 
 ----------------------------------------------------------------------------------------------------------------------------
 ![Topology](https://github.com/VinhLin/Project_SEM_2/blob/main/Topology/Topology_Image.png)

@@ -21,18 +21,17 @@ https://docs.google.com/spreadsheets/d/1Qv2cCKSXS4DtV4rxd2ezQ3oRR3AkluJIYRX271ew
 - Phần **wifi_showroom** chỉ được phép truy cập Internet.
 - Các PC trong mạng có thể **Ping được với nhau** và có thể **truy cập** vào được *Database_Server* và *Web_Server*.
 - **NAS_Server** thì chỉ có *phòng R&D* là truy cập được.
-- Cấu hình dự phòng **gateway** cho Router của *Tòa nhà A*.
 
 ### Tòa nhà B
 - Phần **wifi_showroom** và phần **wifi_guest** chỉ được phép truy cập Internet.
 - Các PC trong mạng có thể *ping được với nhau* và có thể **truy cập** vào được *Database_Server* và *Web_Server*.
-- Tạo **vlan 98** và **vlan 99** để **phòng IT** có thể truy cập (hoặc control) các switch (hoặc router) của **cả hai tòa nhà**.
-- Cấu hình dự phòng cho **SW_Core** và **Router** của Tòa nhà B.
+- Tạo **vlan 99** để **phòng IT** có thể truy cập (hoặc control) các switch (hoặc router) của **cả hai tòa nhà**.
 - Thiết lập sao cho **Home_PC** có thể truy cập được **Web_Server**.
 - Thiết lập sao cho **Home_PC** có thể truy cập được **Database_Server**, thông qua **Tunel**.
 - Thiết lập sao cho **Home_PC** có thể ping được với các PC trong phòng ban **IT**, thông qua **Tunel**.
 - Cấu hình sao cho **Router DHCP_Server** cấp IP cho cả *Tòa nhà A* và *Tòa nhà B*.
 - Cấu hình sao cho chỉ *phòng IT* và *phòng Giám đốc* có thể truy cập vào được *NAS_Server* của **Tòa nhà A**.
+- Đảm bảo tính **HA** (High Available) cho *tòa nhà B*.
 
 
 ---------------------------------------------------------------------------------------------------------------------------
@@ -57,8 +56,7 @@ https://docs.google.com/spreadsheets/d/1Qv2cCKSXS4DtV4rxd2ezQ3oRR3AkluJIYRX271ew
 ### Phân hoạch VLAN để bên IT quản lý.
 |VLAN	|	Note			|Số lượng host tối đa hiện tại|  Prefix	|
 |-------|-----------------------------|--------------------------------|------------------|
-|98	|Quản lý Router		| [x]				| 192.168.1.128/26 |
-|99	|Quản lý Switch		| [x]				| 192.168.1.0/25 |
+|99	|Quản lý Switch và Router (MGMT)| [x]				| 192.168.1.0/25 |
 |100	|Quản lý DHCP_Server		| 2 host			| 192.168.1.232/30 |
 |101	|Quản lý Web_Server		| 2 host			| 192.168.1.192/29 |
 |102	|Quản lý Database_Server	| 2 host			| 192.168.1.200/29 |
@@ -71,23 +69,26 @@ https://docs.google.com/spreadsheets/d/1Qv2cCKSXS4DtV4rxd2ezQ3oRR3AkluJIYRX271ew
 -----------------------------------------------------------------------------------------------------------------------------
 ## Chi phí (Cost) dựa trên Topology
 
-| Tên sản phẩm			| Đơn giá trên một thiết bị	|	Link tham khảo	|
-|-------------------------------|-------------------------------|-----------------------|
-|Switch Cisco Layer 2 (24 port)	| 9,199,000 VND 		|[anphatpc](https://www.anphatpc.com.vn/switch-cisco-ws-c296024tc-s-24-port-combo_id18779.html)|
-|Router Cisco 1921		| 10,800,000 VND		|[tiki](https://tiki.vn/bo-dinh-tuyen-router-cisco-1921k9-2-ge-2-khe-cam-ehwic-512dram-ip-base-hang-chinh-hang-p50476546.html?spid=50476547&utm_source=google&utm_medium=cpc&utm_campaign=SEA_NBR_GGL_SMA_DTP_ALL_VN_ALL_UNK_UNK_C.ALL_X.10625984610_Y.106657549162_V.50476547_W.c_A.1392449951176_O.UNK&gclid=CjwKCAjwpKyYBhB7EiwAU2Hn2fcKlJeKL7HBcfheocsJq20K-oZTA6OmjWr_rWEpaN9Wu7ZlWtm77hoCEqoQAvD_BwE)|
-|Cisco WS-C3560-24TS-S Catalyst 3560 24Port| 24,200,000 VND	|[thietbimangcisco](https://thietbimangcisco.vn/bang-gia-switch-cisco-catalyst-3560-3650-3750x-3850-moi-nhat-2018-v-322-332-5237.html)|
-|PfSense Firewall C2358 2-Core 6 LAN| 17,558,250 VND ($750)	|[corpshadow](https://corpshadow.biz/pfsense/pffw2700?gclid=CjwKCAjwpKyYBhB7EiwAU2Hn2SzXTH5LaCkjXJ3_CowljskdRtPIWYGiF5hx1PIfakDovUTyXQ6P0xoCKN8QAvD_BwE)|
+| Tên sản phẩm				| Đơn giá trên một thiết bị	|	Link tham khảo	|
+|---------------------------------------|-------------------------------|-----------------------|
+|Cisco Catalyst (WS-C2960X-24PS-L) 	| 20,000,000 VND 		|[ebay](https://www.ebay.com/p/219656613)|
+|Router Cisco ISR4331/K9		| 49,000,000 VND		|[ebay](https://www.ebay.com/p/19034357944?iid=195214416396)|
+|Cisco Catalyst WS-C3850-24T-L 		| 56,500,000 VND		|[sieuthimaychu](https://www.sieuthimaychu.vn/index.php/Thong_Tin_San_Pham/7193/Cisco-Catalyst-WS-C3850-24T-L-)|
+|PfSense Firewall C2358 2-Core 6 LAN	| 42,000,000 VND		|[ebay](https://www.ebay.com/itm/115462068500?hash=item1ae2135914:g:nHEAAOSw6aJizPRQ)|
+
+
+
 
 
 |Tòa nhà | Số lượng		| Chi phí	|
 |--------|----------------------|---------------|
-|A	| 3 switch layer 2 	| 27,597,000 VND |
-|A	| 1 Switch Core		| 24,200,000 VND |
-|A	| 2 Router		| 21,600,000 VND |
-|B	| 6 Switch layer 2	| 55,194,000 VND |
-|B	| 2 Switch Core		| 48,400,000 VND |
-|B	| 2 Router		| 21,600,000 VND |
-|B	| 2 Firewall		| 35,122,500 VND |
+|A	| 3 switch layer 2 	|  VND |
+|A	| 1 Switch Core		|  VND |
+|A	| 2 Router		|  VND |
+|B	| 6 Switch layer 2	|  VND |
+|B	| 2 Switch Core		|  VND |
+|B	| 2 Router		|  VND |
+|B	| 2 Firewall		|  VND |
 
-### Tổng chi phí của tòa A: 73,397,000 VND
-### Tổng chi phí của tòa B: 160,316,500 VND	
+### Tổng chi phí của tòa A: VND
+### Tổng chi phí của tòa B: VND	

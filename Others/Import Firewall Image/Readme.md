@@ -21,7 +21,7 @@ cd /opt/unetlab/addons/qemu/pfsense-2.6.0/
 gunzip pfSense-CE-memstick-serial-2.6.0-RELEASE-amd64.img.gz
 mv pfSense-CE-memstick-serial-2.6.0-RELEASE-amd64.img install.img
 /opt/qemu/bin/qemu-img create -f qcow2 virtioa.qcow2 2G
-/opt/qemu/bin/qemu-system-x86_64 -hda cdrom.iso -hdb virtioa.qcow2 -nographic
+/opt/qemu/bin/qemu-system-x86_64 -hda install.img -hdb virtioa.qcow2 -nographic
 ```
 - Tiếp theo là mình cài đặt theo [video hướng dẫn](https://www.youtube.com/watch?v=2UZp8fOeqxs).
 ```
@@ -38,7 +38,6 @@ ada1s1b -> Finish -> Commit
 reboot
 ```
 - Mình đã add vô thành công, có thấy **pfSense** trong Node. Và có thể sử dụng.
-
 
 
 

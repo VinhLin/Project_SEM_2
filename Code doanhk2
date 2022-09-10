@@ -251,6 +251,11 @@ exit
 vlan 70
 name IT
 exit
+end
+wr
+
+	-add ip add vào int vlan-
+	-SW_Core_Active_B-
 int vlan 30
 ip add 192.168.0.1 255.255.255.192
 no shut
@@ -290,7 +295,89 @@ exit
 end
 wr
 
+	-SW_Core_Standby_B-
+int vlan 30	
+ip add 192.168.0.2 255.255.255.192
+no shut
+exit
+int vlan 35
+ip add 192.168.0.226 255.255.255.240
+no shut
+exit
+int vlan 40
+ip add 192.186.0.162 255.255.255.224
+no shut
+exit
+int vlan 45
+ip add 192.168.0.242 255.255.255.240
+no shut
+exit
+int vlan 50
+ip add 192.168.0.67 255.255.255.192
+no shut
+exit
+int vlan 55
+ip add 192.168.0.130 255.255.255.224
+no shut
+exit
+int vlan 60
+ip add 192.168.3.218 255.255.255.248
+no shut
+exit
+int vlan 65 
+ip add 192.168.3.226 255.255.255.248
+no shut
+exit
+int vlan 70
+ip add 192.168.0.194 255.255.255.224
+no shut
+exit
+end
+wr
+
 	-HSRP-
+en
+conf t
+int vlan 30
+standby 30 ip 192.168.0.3
+standby 30 priority 200
+exit
+int vlan 35
+standby 35 ip 192.168.0.227
+standby 35 priority 200
+exit
+int vlan 40
+standby 40 ip 192.168.0.163
+standby 40 priority 200
+exit
+int vlan 45
+standby 45 ip 192.168.0.243
+standby 45 priority 200
+exit
+int vlan 50
+standby 50 ip 192.168.0.67
+standby 50 priority 200
+exit
+int vlan 55
+standby 55 ip 192.168.0.131
+standby 55 priority 200
+exit
+int vlan 60
+standby 60 ip 192.168.3.219
+standby 60 priority 200
+exit
+int vlan 65
+standby 65 ip 192.168.3.227
+standby 65 priority 200
+exit
+int vlan 30
+standby 30 ip 192.168.0.195
+standby 30 priority 200
+exit
+end
+wr
 
-
-
+	-DHCP-
+en
+conf t
+ip dhcp pool DHCP_Vlan30

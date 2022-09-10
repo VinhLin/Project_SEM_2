@@ -1,0 +1,296 @@
+	PORT-CHANNEL
+	-SW_Core-
+	-SW_Core_Active_B-
+en
+conf t
+int ra e2/0-1
+sw trunk en dot1q
+sw mode trunk
+sw trunk allow vlan all
+channel-group 1 mode auto
+exit
+int ra e2/2-3
+sw trunk en dot1q
+sw mode trunk
+sw trunk allow vlan all
+channel-group 2 mode auto
+exit
+int ra e3/0-1
+sw trunk en dot1q
+sw mode trunk
+sw trunk allow vlan all
+channel-group 3 mode auto
+exit
+int ra e3/2-3
+sw trunk en dot1q
+sw mode trunk
+sw trunk allow vlan all
+channel-group 4 mode auto
+exit
+int ra e4/0-1
+sw trunk en dot1q
+sw mode trunk
+sw trunk allow vlan all
+channel-group 5 mode auto
+exit
+end
+wr
+
+	-SW_Core_Standby_B-
+en
+conf t
+int ra e2/0-1
+sw trunk en dot1q
+sw mode trunk
+sw trunk allow vlan all
+channel-group 11 mode auto
+exit
+int ra e2/2-3
+sw trunk en dot1q
+sw mode trunk
+sw trunk allow vlan all
+channel-group 12 mode auto
+exit
+int ra e3/0-1
+sw trunk en dot1q
+sw mode trunk
+sw trunk allow vlan all
+channel-group 13 mode auto
+exit
+int ra e3/2-3
+sw trunk en dot1q
+sw mode trunk
+sw trunk allow vlan all
+channel-group 14 mode auto
+exit
+int ra e4/0-1
+sw trunk en dot1q
+sw mode trunk
+sw trunk allow vlan all
+channel-group 15 mode auto
+exit
+end
+wr
+
+	-SW_client-
+	-SW_F1-
+en
+conf t
+int ra e0/0-1
+sw tr	encap dot1q
+sw mode trunk
+sw trunk allow vlan all
+channel-group 1 mode auto
+exit
+int r e0/2-3
+sw tr encap dot1q
+sw mode trunk
+sw trunk allow vlan all
+channel-group 11 mode auto
+exit
+int e1/0
+sw mode acc
+sw acc vlan 30
+exit
+int e1/1
+sw mode acc
+sw acc vlan 35
+exit
+end
+wr
+
+	-SW_F2-
+en
+conf t
+int ra e0/0-1
+sw tr	encap dot1q
+sw mode trunk
+sw trunk allow vlan all
+channel-group 1 mode auto
+exit
+int r e0/2-3
+sw tr encap dot1q
+sw mode trunk
+sw trunk allow vlan all
+channel-group 12 mode auto
+exit
+int e1/0
+sw mode acc
+sw acc vlan 40
+exit
+int e1/1
+sw mode acc
+sw acc vlan 45
+exit
+end
+wr
+
+	-SW_F3-
+en
+conf t
+int ra e0/0-1
+sw tr	encap dot1q
+sw mode trunk
+sw trunk allow vlan all
+channel-group 3 mode auto
+exit
+int r e0/2-3
+sw tr encap dot1q
+sw mode trunk
+sw trunk allow vlan all
+channel-group 13 mode auto
+exit
+int e1/0
+sw mode acc
+sw acc vlan 50
+exit
+int e1/1
+sw mode acc
+sw acc vlan 55
+exit
+end
+wr
+
+	-SW_F4-
+en
+conf t
+int ra e0/0-1
+sw tr	encap dot1q
+sw mode trunk
+sw trunk allow vlan all
+channel-group 4 mode auto
+exit
+int r e0/2-3
+sw tr encap dot1q
+sw mode trunk
+sw trunk allow vlan all
+channel-group 14 mode auto
+exit
+int e1/0
+sw mode acc
+sw acc vlan 60
+exit
+int e1/1
+sw mode acc
+sw acc vlan 65
+exit
+end
+wr
+
+	-SW_F5-
+en
+conf t
+int ra e0/0-1
+sw tr	encap dot1q
+sw mode trunk
+sw trunk allow vlan all
+channel-group 5 mode auto
+exit
+int r e0/2-3
+sw tr encap dot1q
+sw mode trunk
+sw trunk allow vlan all
+channel-group 15 mode auto
+exit
+int e1/0
+sw mode acc
+sw acc vlan 70
+exit
+end
+wr
+
+
+	VTP
+	-server-
+en
+conf t
+vtp domain hoiso
+vtp mode server
+vtp version 2
+vtp pass 123
+end
+wr
+
+	-client-
+en
+conf t
+vtp domain hoiso
+vtp mode client
+vtp version 2
+vtp pass 123
+end
+wr
+
+	VLAN
+en
+conf t
+vlan 30
+name wifi_showroon_B
+exit
+vlan 35
+name MKT
+exit
+vlan 40
+name CX
+exit
+vlan 45
+name HR
+exit
+vlan 50
+name Sales
+exit
+vlan 55
+name Guest
+exit
+vlan 60
+name Ke_toan
+exit
+vlan 65
+name Giam_doc
+exit
+vlan 70
+name IT
+exit
+int vlan 30
+ip add 192.168.0.1 255.255.255.192
+no shut
+exit
+int vlan 35
+ip add 192.168.0.225 255.255.255.240
+no shut
+exit
+int vlan 40
+ip add 192.186.0.161 255.255.255.224
+no shut
+exit
+int vlan 45
+ip add 192.168.0.241 255.255.255.240
+no shut
+exit
+int vlan 50
+ip add 192.168.0.65 255.255.255.192
+no shut
+exit
+int vlan 55
+ip add 192.168.0.129 255.255.255.224
+no shut
+exit
+int vlan 60
+ip add 192.168.3.217 255.255.255.248
+no shut
+exit
+int vlan 65 
+ip add 192.168.3.225 255.255.255.248
+no shut
+exit
+int vlan 70
+ip add 192.168.0.193 255.255.255.224
+no shut
+exit
+end
+wr
+
+	-HSRP-
+
+
+

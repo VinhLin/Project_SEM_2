@@ -53,15 +53,14 @@ https://docs.google.com/spreadsheets/d/1Qv2cCKSXS4DtV4rxd2ezQ3oRR3AkluJIYRX271ew
 | B	| Giám đốc		|	5 người		| 65	|192.168.3.224/29 |
 | B	| IT			|	20 người		| 70	|192.168.0.192/27 |
 
-### Phân hoạch VLAN để bên IT quản lý.
-|VLAN	|	Note			|Số lượng host tối đa hiện tại|  Prefix	|
-|-------|-----------------------------|--------------------------------|------------------|
-|99	|Quản lý Switch và Router (MGMT)| [x]				| 172.16.3.0/25 |
-|100	|Quản lý DHCP_Server		| 2 host			| 172.168.3.232/30 |
-|101	|Quản lý Web_Server		| 2 host			| 172.16.3.192/29 |
-|102	|Quản lý Database_Server	| 2 host			| 172.16.3.200/29 |
-|103	|Quản lý Monitoring_Server	| 2 host			| 172.16.3.236/30 |
-|104	|Quản lý NAS_Server		| 1 host			| 172.16.3.208/29 |
+### VLAN 99 (MGMT) với lớp mạng 172.16.3.0/24 để bên IT quản lý thiết bị
+|	Thiết bị		|  Ip address	|
+|-------------------------------|---------------|
+| Database_Server		| 172.16.3.50/24 |
+| DHCP_Server			| 172.168.3.100/24 |
+| Monitoring_Server		| 172.16.3.150/24 |
+| Web_Server			| 172.16.3.200/24 |
+| NAS_Server			| 172.16.3.250/24 |
 
 ----------------------------------------------------------------------------------------------------------------------------
 ![Topology](https://github.com/VinhLin/Project_SEM_2/blob/main/Topology/Topology_Image.png)

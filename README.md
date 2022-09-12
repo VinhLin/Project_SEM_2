@@ -10,8 +10,8 @@ https://docs.google.com/document/d/1oRB9gSdkckEasdirMAchKR53ef3hzXXzNd6QXLdFDHQ/
 
 ### Lưu ý:
 - Mỗi thành viên trong nhóm khi hoàn thành xong task, và đánh dấu trạng thái DONE trong **bảng phân công nhiệm vụ**.
-- Đối với các config thiết bị, cần copy phần **running** ra file *txt* và push lên Git, trong thư mục `Topology/Config_Device`.
-- Ngoài ra nếu có thể thì nên screenshot lại kết quả đạt được khi cấu hình xong và copy vào thư mục `Image`.
+- Đối với các config thiết bị, cần copy phần **running** ra file *txt* và push lên Git, trong thư mục `Config_Device`.
+- Ngoài ra nếu có thể thì nên screenshot lại kết quả đạt được khi cấu hình xong và copy vào thư mục `Image_Result`.
 
 --------------------------------------------------------------------------------------------------------------------------
 ## Yêu cầu Tổng quát
@@ -61,7 +61,7 @@ https://docs.google.com/document/d/1oRB9gSdkckEasdirMAchKR53ef3hzXXzNd6QXLdFDHQ/
 | NAS_Server			| 172.16.3.250/24 |
 
 ----------------------------------------------------------------------------------------------------------------------------
-![Topology](https://github.com/VinhLin/Project_SEM_2/blob/main/Topology/Topology_Image.png)
+![Topology](https://github.com/VinhLin/Project_SEM_2/blob/main/1_Topology/Topology_Image.png)
 
 -----------------------------------------------------------------------------------------------------------------------------
 ## Chi phí (Cost) dựa trên Topology

@@ -6,6 +6,8 @@ Lab project Jetking SEM2.
 
 https://docs.google.com/spreadsheets/d/1Qv2cCKSXS4DtV4rxd2ezQ3oRR3AkluJIYRX271ewn3E/edit#gid=0
 
+https://docs.google.com/document/d/1oRB9gSdkckEasdirMAchKR53ef3hzXXzNd6QXLdFDHQ/edit
+
 ### Lưu ý:
 - Mỗi thành viên trong nhóm khi hoàn thành xong task, và đánh dấu trạng thái DONE trong **bảng phân công nhiệm vụ**.
 - Đối với các config thiết bị, cần copy phần **running** ra file *txt* và push lên Git, trong thư mục `Topology/Config_Device`.

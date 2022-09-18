@@ -34,6 +34,7 @@ https://docs.google.com/document/d/1oRB9gSdkckEasdirMAchKR53ef3hzXXzNd6QXLdFDHQ/
 
 ---------------------------------------------------------------------------------------------------------------------------
 ## Phân hoạch IP
+- [IPv4 Subnet Calculator](http://www.exampointers.com/ipv4/)
 ### Phân hoạch dựa trên phòng ban và số nhân sự tối đa.
 |Tòa nhà| Phòng ban		| Số lượng truy cập tối đa	| VLAN	| Lớp mạng		|
 |-------|----------------------|--------------------------------|-------|----------------------|
@@ -47,8 +48,8 @@ https://docs.google.com/document/d/1oRB9gSdkckEasdirMAchKR53ef3hzXXzNd6QXLdFDHQ/
 | B	| Nhân sự (HR)		|	5 người		| 45	|192.168.0.240/28 |
 | B	| Sales			|	30 người		| 50	|192.168.0.64/26 |
 | B	| Guest			|	15 người		| 55	|192.168.0.128/27 |
-| B	| Kế toán		|	5 người		| 60	|192.168.3.216/29 |
-| B	| Giám đốc		|	5 người		| 65	|192.168.3.224/29 |
+| B	| Kế toán		|	3 người		| 60	|192.168.3.216/29 |
+| B	| Giám đốc		|	3 người		| 65	|192.168.3.224/29 |
 | B	| IT			|	20 người		| 70	|192.168.0.192/27 |
 
 ### VLAN 99 (MGMT) với lớp mạng 172.16.3.0/24 để bên IT quản lý thiết bị
@@ -86,6 +87,15 @@ https://docs.google.com/document/d/1oRB9gSdkckEasdirMAchKR53ef3hzXXzNd6QXLdFDHQ/
 
 ### Tổng chi phí của tòa A: 138,500,000 VND
 ### Tổng chi phí của tòa B: 366,000,000 VND	
+
+-----------------------------------------------------------------------------------------------
+### TODO
+[] DHCP
+[] VPN (VPN Site-to-Site, VPN Remote Access)
+[] ACL
+[] Monitor
+
+
 
 
 

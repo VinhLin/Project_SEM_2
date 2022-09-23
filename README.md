@@ -56,7 +56,7 @@ https://docs.google.com/document/d/1oRB9gSdkckEasdirMAchKR53ef3hzXXzNd6QXLdFDHQ/
 |	Thiết bị		|  Ip address	|
 |-------------------------------|---------------|
 | Database_Server		| 172.16.3.50/24 |
-| DHCP_Server			| 172.168.3.100/24 |
+| DHCP_Server			| 172.16.3.100/24 |
 | Monitoring_Server		| 172.16.3.150/24 |
 | Web_Server			| 172.16.3.200/24 |
 | NAS_Server			| 172.16.3.250/24 |
@@ -90,13 +90,10 @@ https://docs.google.com/document/d/1oRB9gSdkckEasdirMAchKR53ef3hzXXzNd6QXLdFDHQ/
 
 -----------------------------------------------------------------------------------------------
 ### TODO
-[] DHCP
-[] VPN (VPN Site-to-Site, VPN Remote Access)
-[] ACL
-[] Monitor
-
-
-
+- [] DHCP
+- [] VPN (VPN Site-to-Site, VPN Remote Access)
+- [] Monitor
+- [] ACL
 
 
 

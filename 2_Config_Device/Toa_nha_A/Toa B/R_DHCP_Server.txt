@@ -1,0 +1,177 @@
+
+!
+version 15.5
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R_DHCP_Server
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+bsd-client server url https://cloudsso.cisco.com/as/token.oauth2
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+!
+ip dhcp excluded-address 192.168.0.1 192.168.0.3
+ip dhcp excluded-address 192.168.0.225 192.168.0.227
+ip dhcp excluded-address 192.168.0.161 192.168.0.163
+ip dhcp excluded-address 192.168.0.241 192.168.0.243
+ip dhcp excluded-address 192.168.0.65 192.168.0.67
+ip dhcp excluded-address 192.168.0.129 192.168.0.131
+ip dhcp excluded-address 192.168.0.193 192.168.0.195
+ip dhcp excluded-address 192.168.3.217 192.168.3.219
+ip dhcp excluded-address 192.168.3.225 192.168.3.227
+!
+ip dhcp pool DHCP_VLAN30_SHOWROOM_B
+ network 192.168.0.0 255.255.255.192
+ default-router 192.168.0.3 
+ dns-server 8.8.8.8 
+!
+ip dhcp pool DHCP_VLAN35_MKT
+ network 192.168.0.224 255.255.255.240
+ default-router 192.168.0.227 
+ dns-server 8.8.8.8 
+!
+ip dhcp pool DHCP_VLAN40_CX
+ network 192.168.0.160 255.255.255.224
+ default-router 192.168.0.163 
+ dns-server 8.8.8.8 
+!
+ip dhcp pool DHCP_VLAN45_HR
+ network 192.168.0.240 255.255.255.240
+ default-router 192.168.0.243 
+ dns-server 8.8.8.8 
+!
+ip dhcp pool DHCP_VLAN50_SALES
+ network 192.168.0.64 255.255.255.192
+ default-router 192.168.0.67 
+ dns-server 8.8.8.8 
+!
+ip dhcp pool DHCP_VLAN55_GUEST
+ network 192.168.0.128 255.255.255.224
+ default-router 192.168.0.131 
+ dns-server 8.8.8.8 
+!
+ip dhcp pool DHCP_VLAN60_KE_TOAN
+ network 192.168.3.216 255.255.255.248
+ default-router 192.168.3.219 
+ dns-server 8.8.8.8 
+!
+ip dhcp pool DHCP_VLAN65_GIAM_DOC
+ network 192.168.3.224 255.255.255.248
+ default-router 192.168.3.227 
+ dns-server 8.8.8.8 
+!
+ip dhcp pool DHCP_VLAN70_IT
+ network 192.168.0.192 255.255.255.224
+ default-router 192.168.0.195 
+ dns-server 8.8.8.8 
+!
+!
+!
+no ip domain lookup
+no ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+cts logging verbose
+!
+!
+!
+redundancy
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Ethernet0/0
+ no shutdown
+ ip address 172.16.3.100 255.255.255.0
+!
+interface Ethernet0/1
+ no shutdown
+ no ip address
+ shutdown
+!
+interface Ethernet0/2
+ no shutdown
+ no ip address
+ shutdown
+!
+interface Ethernet0/3
+ no shutdown
+ no ip address
+ shutdown
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip route 0.0.0.0 0.0.0.0 172.16.3.4
+ip route 0.0.0.0 0.0.0.0 172.16.3.5
+ip route 0.0.0.0 0.0.0.0 172.16.3.6
+!
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ logging synchronous
+line aux 0
+line vty 0 4
+ login
+ transport input none
+!
+!
+end

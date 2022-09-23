@@ -1,0 +1,289 @@
+
+!
+version 15.1
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+service compress-config
+!
+hostname SW_Core_Standby_B
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+no ip cef
+!
+!
+no ip domain-lookup
+no ipv6 cef
+ipv6 multicast rpf use-bgp
+!
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+!
+!
+!
+vlan internal allocation policy ascending
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+interface Port-channel10
+ no shutdown
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface Port-channel9
+ no shutdown
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface Port-channel8
+ no shutdown
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface Port-channel7
+ no shutdown
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface Port-channel6
+ no shutdown
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface Ethernet0/0
+ no shutdown
+ switchport access vlan 99
+ switchport mode access
+ duplex auto
+!
+interface Ethernet0/1
+ no shutdown
+ duplex auto
+!
+interface Ethernet0/2
+ no shutdown
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet0/3
+ no shutdown
+ duplex auto
+!
+interface Ethernet1/0
+ no shutdown
+ duplex auto
+!
+interface Ethernet1/1
+ no shutdown
+ duplex auto
+!
+interface Ethernet1/2
+ no shutdown
+ duplex auto
+!
+interface Ethernet1/3
+ no shutdown
+ duplex auto
+!
+interface Ethernet2/0
+ no shutdown
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ duplex auto
+ channel-group 6 mode desirable
+!
+interface Ethernet2/1
+ no shutdown
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ duplex auto
+ channel-group 6 mode desirable
+!
+interface Ethernet2/2
+ no shutdown
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ duplex auto
+ channel-group 7 mode desirable
+!
+interface Ethernet2/3
+ no shutdown
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ duplex auto
+ channel-group 7 mode desirable
+!
+interface Ethernet3/0
+ no shutdown
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ duplex auto
+ channel-group 8 mode desirable
+!
+interface Ethernet3/1
+ no shutdown
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ duplex auto
+ channel-group 8 mode desirable
+!
+interface Ethernet3/2
+ no shutdown
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ duplex auto
+ channel-group 9 mode desirable
+!
+interface Ethernet3/3
+ no shutdown
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ duplex auto
+ channel-group 9 mode desirable
+!
+interface Ethernet4/0
+ no shutdown
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ duplex auto
+ channel-group 10 mode desirable
+!
+interface Ethernet4/1
+ no shutdown
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ duplex auto
+ channel-group 10 mode desirable
+!
+interface Ethernet4/2
+ no shutdown
+ duplex auto
+!
+interface Ethernet4/3
+ no shutdown
+ duplex auto
+!
+interface Ethernet5/0
+ no shutdown
+ duplex auto
+!
+interface Ethernet5/1
+ no shutdown
+ duplex auto
+!
+interface Ethernet5/2
+ no shutdown
+ duplex auto
+!
+interface Ethernet5/3
+ no shutdown
+ duplex auto
+!
+interface Vlan30
+ no shutdown
+ ip address 192.168.0.2 255.255.255.192
+ ip nat inside
+ standby 1 ip 192.168.0.3
+!
+interface Vlan35
+ no shutdown
+ ip address 192.168.0.226 255.255.255.240
+ ip nat inside
+ standby 1 ip 192.168.0.227
+!
+interface Vlan40
+ no shutdown
+ ip address 192.168.0.162 255.255.255.224
+ ip nat inside
+ standby 1 ip 192.168.0.163
+!
+interface Vlan45
+ no shutdown
+ ip address 192.168.0.242 255.255.255.240
+ ip nat inside
+ standby 1 ip 192.168.0.243
+!
+interface Vlan50
+ no shutdown
+ ip address 192.168.0.66 255.255.255.192
+ ip nat inside
+ standby 1 ip 192.168.0.67
+!
+interface Vlan55
+ no shutdown
+ ip address 192.168.0.130 255.255.255.224
+ ip nat inside
+ standby 1 ip 192.168.0.131
+!
+interface Vlan60
+ no shutdown
+ ip address 192.168.3.218 255.255.255.248
+ ip nat inside
+ standby 1 ip 192.168.3.219
+!
+interface Vlan65
+ no shutdown
+ ip address 192.168.3.226 255.255.255.248
+ ip nat inside
+ standby 1 ip 192.168.3.227
+!
+interface Vlan70
+ no shutdown
+ ip address 192.168.0.194 255.255.255.224
+ ip nat inside
+ standby 1 ip 192.168.0.195
+!
+interface Vlan99
+ no shutdown
+ ip address 172.16.3.6 255.255.255.0
+ ip nat outside
+ standby 1 ip 172.16.3.4
+!
+ip nat inside source list 1 interface Vlan99 overload
+!
+no ip http server
+!
+!
+access-list 1 remark Connect to Internet
+access-list 1 permit any
+!
+!
+snmp-server community public RO
+snmp-server enable traps snmp authentication linkdown linkup coldstart warmstart
+!
+control-plane
+!
+!
+line con 0
+ logging synchronous
+line aux 0
+line vty 0 4
+ login
+!
+end

@@ -1,0 +1,188 @@
+
+!
+version 15.1
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+service compress-config
+!
+hostname SW_F3
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+no ip routing
+!
+no ip cef
+!
+!
+no ipv6 cef
+ipv6 multicast rpf use-bgp
+!
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+!
+!
+!
+vlan internal allocation policy ascending
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+interface Port-channel8
+ no shutdown
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface Port-channel3
+ no shutdown
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface Ethernet0/0
+ no shutdown
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ duplex auto
+ channel-group 3 mode desirable
+!
+interface Ethernet0/1
+ no shutdown
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ duplex auto
+ channel-group 3 mode desirable
+!
+interface Ethernet0/2
+ no shutdown
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ duplex auto
+ channel-group 8 mode desirable
+!
+interface Ethernet0/3
+ no shutdown
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ duplex auto
+ channel-group 8 mode desirable
+!
+interface Ethernet1/0
+ no shutdown
+ switchport access vlan 50
+ switchport mode access
+ duplex auto
+!
+interface Ethernet1/1
+ no shutdown
+ switchport access vlan 55
+ switchport mode access
+ duplex auto
+!
+interface Ethernet1/2
+ no shutdown
+ duplex auto
+!
+interface Ethernet1/3
+ no shutdown
+ duplex auto
+!
+interface Ethernet2/0
+ no shutdown
+ duplex auto
+!
+interface Ethernet2/1
+ no shutdown
+ duplex auto
+!
+interface Ethernet2/2
+ no shutdown
+ duplex auto
+!
+interface Ethernet2/3
+ no shutdown
+ duplex auto
+!
+interface Ethernet3/0
+ no shutdown
+ duplex auto
+!
+interface Ethernet3/1
+ no shutdown
+ duplex auto
+!
+interface Ethernet3/2
+ no shutdown
+ duplex auto
+!
+interface Ethernet3/3
+ no shutdown
+ duplex auto
+!
+interface Ethernet4/0
+ no shutdown
+ duplex auto
+!
+interface Ethernet4/1
+ no shutdown
+ duplex auto
+!
+interface Ethernet4/2
+ no shutdown
+ duplex auto
+!
+interface Ethernet4/3
+ no shutdown
+ duplex auto
+!
+interface Ethernet5/0
+ no shutdown
+ duplex auto
+!
+interface Ethernet5/1
+ no shutdown
+ duplex auto
+!
+interface Ethernet5/2
+ no shutdown
+ duplex auto
+!
+interface Ethernet5/3
+ no shutdown
+ duplex auto
+!
+!
+no ip http server
+!
+!
+!
+!
+!
+control-plane
+!
+!
+line con 0
+ logging synchronous
+line aux 0
+line vty 0 4
+ login
+!
+end

@@ -1,6 +1,8 @@
 
 !
-version 15.1
+! Last configuration change at 08:34:46 UTC Sat Sep 24 2022
+!
+version 15.2
 service timestamps debug datetime msec
 service timestamps log datetime msec
 no service password-encryption
@@ -14,25 +16,23 @@ boot-end-marker
 !
 !
 no aaa new-model
+!
+!
+!
+!
+!
 no ip routing
 !
+!
+!
 no ip cef
-!
-!
-no ipv6 cef
 ipv6 multicast rpf use-bgp
-!
-!
-!
-!
+no ipv6 cef
 !
 !
 !
 spanning-tree mode pvst
 spanning-tree extend system-id
-!
-!
-!
 !
 vlan internal allocation policy ascending
 !
@@ -45,15 +45,17 @@ vlan internal allocation policy ascending
 !
 !
 !
-interface Port-channel9
- no shutdown
- switchport
- switchport trunk encapsulation dot1q
- switchport mode trunk
+!
+!
+!
 !
 interface Port-channel4
  no shutdown
- switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface Port-channel9
+ no shutdown
  switchport trunk encapsulation dot1q
  switchport mode trunk
 !
@@ -61,116 +63,95 @@ interface Ethernet0/0
  no shutdown
  switchport trunk encapsulation dot1q
  switchport mode trunk
- duplex auto
- channel-group 4 mode desirable
+ channel-group 4 mode active
 !
 interface Ethernet0/1
  no shutdown
  switchport trunk encapsulation dot1q
  switchport mode trunk
- duplex auto
- channel-group 4 mode desirable
+ channel-group 4 mode active
 !
 interface Ethernet0/2
  no shutdown
  switchport trunk encapsulation dot1q
  switchport mode trunk
- duplex auto
- channel-group 9 mode desirable
+ channel-group 9 mode active
 !
 interface Ethernet0/3
  no shutdown
  switchport trunk encapsulation dot1q
  switchport mode trunk
- duplex auto
- channel-group 9 mode desirable
+ channel-group 9 mode active
 !
 interface Ethernet1/0
  no shutdown
  switchport access vlan 60
  switchport mode access
- duplex auto
 !
 interface Ethernet1/1
  no shutdown
  switchport access vlan 65
  switchport mode access
- duplex auto
 !
 interface Ethernet1/2
  no shutdown
- duplex auto
 !
 interface Ethernet1/3
  no shutdown
- duplex auto
 !
 interface Ethernet2/0
  no shutdown
- duplex auto
 !
 interface Ethernet2/1
  no shutdown
- duplex auto
 !
 interface Ethernet2/2
  no shutdown
- duplex auto
 !
 interface Ethernet2/3
  no shutdown
- duplex auto
 !
 interface Ethernet3/0
  no shutdown
- duplex auto
 !
 interface Ethernet3/1
  no shutdown
- duplex auto
 !
 interface Ethernet3/2
  no shutdown
- duplex auto
 !
 interface Ethernet3/3
  no shutdown
- duplex auto
 !
 interface Ethernet4/0
  no shutdown
- duplex auto
 !
 interface Ethernet4/1
  no shutdown
- duplex auto
 !
 interface Ethernet4/2
  no shutdown
- duplex auto
 !
 interface Ethernet4/3
  no shutdown
- duplex auto
 !
 interface Ethernet5/0
  no shutdown
- duplex auto
 !
 interface Ethernet5/1
  no shutdown
- duplex auto
 !
 interface Ethernet5/2
  no shutdown
- duplex auto
 !
 interface Ethernet5/3
  no shutdown
- duplex auto
 !
+ip forward-protocol nd
 !
 no ip http server
+no ip http secure-server
+!
 !
 !
 !
@@ -185,4 +166,6 @@ line aux 0
 line vty 0 4
  login
 !
+!
 end
+

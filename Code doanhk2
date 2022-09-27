@@ -381,3 +381,18 @@ wr
 en
 conf t
 ip dhcp pool DHCP_Vlan30
+
+	chỉ cho wifi truy cập net
+	-các sw core-
+en
+conf t
+ip access-list stan acl_deny_vlan30 
+deny 192.168.0.0 0.0.0.63
+permit any
+ex
+int ..... (các port channel/int cần khóa)
+ip access-group deny_vlan30 out
+end
+wr
+
+

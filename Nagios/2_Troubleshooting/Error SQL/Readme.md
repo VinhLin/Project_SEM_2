@@ -24,6 +24,7 @@ awk '/"nagiosxi" => array\(/{getline;print}' /usr/local/nagiosxi/html/config.inc
 ```
 sudo su
 /usr/local/nagiosxi/scripts/repair_databases.sh
+/usr/local/nagiosxi/scripts/reconfigure_nagios.sh
 ```
 
 ```
@@ -34,6 +35,7 @@ myisamchk -r -f nagios_<corrupted_table>
 systemctl start mysql.service
 rm -f /usr/local/nagiosxi/var/dbmaint.lock
 php /usr/local/nagiosxi/cron/dbmaint.php
+cd
 ```
 
 ```
@@ -56,14 +58,13 @@ cp dbmaint.php /usr/local/nagiosxi/cron
 ```
 sudo su
 service mysqld start
-rm -f /usr/local/nagiosxi/var/dbmaint.lock
-/usr/local/nagiosxi/cron/dbmaint.php
+rm -f /usr/local/nagiosxi/var/dbmaint.lock /usr/local/nagiosxi/cron/dbmaint.php
 ```
 
 ```
 sudo su
 service ndo2db start
-service Nagios start
+service nagios start
 ```
 
 ```

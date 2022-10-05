@@ -13,7 +13,6 @@ https://cloudinfrastructureservices.co.uk/nagios-vs-prometheus-open-source-monit
 - Step 1: Check for the updates:
 ```
 sudo apt update
-sudo apt-get upgrade
 sudo apt install -y build-essential apache2 php openssl perl make php-gd libgd-dev libapache2-mod-php libperl-dev libssl-dev daemon wget apache2-utils unzip
 ```
 - Step 2: Create a user account

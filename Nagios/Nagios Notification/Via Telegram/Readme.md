@@ -46,13 +46,42 @@ nano commands.cfg
 # commands to send host/service notifications
 define command {
   command_name     notify-host-by-telegram
-  command_line     /usr/local/nagios/libexec/nagios_telegram.py --token 5654292386:AAHQVUr4Lqn66yIsKzX6p-YRmPVzKDD4m0M --object_type host --contact "-5654292386" --notificationtype "$NOTIFICATIONTYPE$" --hoststate "$HOSTSTATE$" --hostname "$HOSTNAME$" --hostaddress "$HOSTADDRESS$" --output "$HOSTOUTPUT$"
+  command_line     /usr/local/nagios/libexec/nagios_telegram.py --token 5654292386:AAHQVUr4Lqn66yIsKzX6p-YRmPVzKDD4m0M --object_type host --contact "-5018541524" --notificationtype "$NOTIFICATIONTYPE$" --hoststate "$HOSTSTATE$" --hostname "$HOSTNAME$" --hostaddress "$HOSTADDRESS$" --output "$HOSTOUTPUT$"
 }
 define command {
   command_name     notify-service-by-telegram
-  command_line     /usr/local/nagios/libexec/nagios_telegram.py --token 5654292386:AAHQVUr4Lqn66yIsKzX6p-YRmPVzKDD4m0M --object_type service --contact "-5654292386" --notificationtype "$NOTIFICATIONTYPE$" --servicestate "$SERVICESTATE$" --hostname "$HOSTNAME$" --servicedesc "$SERVICEDESC$" --output "$SERVICEOUTPUT$"
+  command_line     /usr/local/nagios/libexec/nagios_telegram.py --token 5654292386:AAHQVUr4Lqn66yIsKzX6p-YRmPVzKDD4m0M --object_type service --contact "-5018541524" --notificationtype "$NOTIFICATIONTYPE$" --servicestate "$SERVICESTATE$" --hostname "$HOSTNAME$" --servicedesc "$SERVICEDESC$" --output "$SERVICEOUTPUT$"
 }
 ```
+
+```
+# Host notification via Telegram bot
+define command{
+        command_name    notify-host-by-telegram
+        command_line     curl -k -L --data chat_id=-5018541524 --data-urlencode "text=***** Nagios ***** Notification Type: $NOTIFICATIONTYPE$ Host: $HOSTNAME$ State: $HOSTSTATE$ Address: $HOSTADDRESS$ Info: $HOSTOUTPUT$ Date/Time: $LONGDATETIME$" "https://api.telegram.org/bot5654292386:AAHQVUr4Lqn66yIsKzX6p-YRmPVzKDD4m0M/sendMessage"
+        }
+
+# Service notification via Telegram bot
+define command{
+        command_name    notify-service-by-telegram
+        command_line   curl -k -L --data chat_id=-5018541524 --data-urlencode "text=***** Nagios ***** Notification Type: $NOTIFICATIONTYPE$ Service: $SERVICEDESC$ Host: $HOSTALIAS$ Address: $HOSTADDRESS$ State: $SERVICESTATE$ Date/Time: $LONGDATETIME$ Additional Info: $SERVICEOUTPUT$" "https://api.telegram.org/bot5654292386:AAHQVUr4Lqn66yIsKzX6p-YRmPVzKDD4m0M/sendMessage"
+        }
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

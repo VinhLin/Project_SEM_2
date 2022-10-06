@@ -1,10 +1,9 @@
-- sudo apt update
-- sudo apt-get upgrade
-
------------------------------------------------------------------------------------
-- sudo apt install net-tools
-
-- sudo apt install arp-scan
+### Cài đặt một số thứ
+```
+sudo apt update
+sudo apt install net-tools
+sudo apt install arp-scan
+```
 
 -----------------------------------------------------------------------------------
 ### Fix Error

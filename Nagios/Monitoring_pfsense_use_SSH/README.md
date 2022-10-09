@@ -97,30 +97,20 @@ OS: FreeBSD
 Host name: pfsense-home
 ```
 - Thực hiện add các command mà mình muốn **Monitor**.
+- Ví dụ:
+Remote Command						|	Display Name	|
+--------------------------------------------------------|-----------------------|
+/usr/local/libexec/nagios/check_disk /			|Root Disk Space	|
+/usr/local/libexec/nagios/check_users -w 5 -c 10	|Current Users		|
+/usr/local/libexec/nagios/check_procs -w 150 -c 170	|Total Processes	|
+/usr/local/libexec/nagios/check_load -w 2,1.5,1 -c 4,3,2|Total CPU Load		|
+/usr/local/libexec/nagios/check_swap -w 30% -c 10%	|Free Swap Space	|
+/usr/local/libexec/nagios/check_pf_uptime		|Uptime			|
+/usr/local/libexec/nagios/check_apt			|Check update		|
+/usr/local/libexec/nagios/check_pf_ipsec_tunnel -e 192.168.1.4 | Check Status IPSec Tunel of remote IP |
+
 - Tiếp đến thực hiện các bước để hoàn tất việc setup.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+- Sau đó mình thu được kết quả như hình **Result_Monitor_use_SSH.png**
 
 
 

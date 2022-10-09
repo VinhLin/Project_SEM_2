@@ -98,6 +98,7 @@ Host name: pfsense-home
 ```
 - Thực hiện add các command mà mình muốn **Monitor**.
 - Ví dụ:
+
 Remote Command						|	Display Name	|
 --------------------------------------------------------|-----------------------|
 /usr/local/libexec/nagios/check_disk /			|Root Disk Space	|
@@ -108,6 +109,7 @@ Remote Command						|	Display Name	|
 /usr/local/libexec/nagios/check_pf_uptime		|Uptime			|
 /usr/local/libexec/nagios/check_apt			|Check update		|
 /usr/local/libexec/nagios/check_pf_ipsec_tunnel -e 192.168.1.4 | Check Status IPSec Tunel of remote IP |
+
 
 - Tiếp đến thực hiện các bước để hoàn tất việc setup.
 - Sau đó mình thu được kết quả như hình **Result_Monitor_use_SSH.png**

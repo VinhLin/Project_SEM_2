@@ -91,9 +91,9 @@ https://docs.google.com/document/d/1oRB9gSdkckEasdirMAchKR53ef3hzXXzNd6QXLdFDHQ/
 -----------------------------------------------------------------------------------------------
 ### TODO
 - [x] DHCP Server
-- [] VPN Site-to-Site
+- [x] VPN Site-to-Site
 - [] VPN Remote Access
-- [] Monitor
+- [x] Monitor
 - [] ACL
 
 

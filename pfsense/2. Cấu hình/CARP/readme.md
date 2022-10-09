@@ -27,8 +27,8 @@ IP ảo (Virtual IP): 172.16.3.3
 ```
 Tích V vào ô Synchronize States
 Synchronize Interface: LAN
-pfsense Synchronize Peer IP -> Điền IP Slave là: 172.16.3.2 
-Synchronize Config to IP -> Điền IP Slave là: 172.16.3.2 
+pfsense Synchronize Peer IP -> Điền IP Slave là: 172.16.3.12 
+Synchronize Config to IP -> Điền IP Slave là: 172.16.3.12 
 ```
 - Phần username và pass mình điền là:
 ```
@@ -52,10 +52,31 @@ Password: 172.16.3.3
 - Làm tương tự như trên.
 - Chỉ thay đổi một số thứ:
 ```
-pfsense Synchronize Peer IP -> Điền IP Slave là: 172.16.3.1
-Synchronize Config to IP -> Điền IP Slave là: 172.16.3.1
+pfsense Synchronize Peer IP -> Điền IP Slave là: 172.16.3.11
+Synchronize Config to IP -> Điền IP Slave là: 172.16.3.11
 ```
 - Virtual IP phần **Skew** mình đổi thành **100** để nó thành **Backup**.
+
+-----------------------------------------------------------------------------------------
+### THAT BAI
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

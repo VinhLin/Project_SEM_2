@@ -3,6 +3,7 @@
 https://github.com/mglantz/nagios-telegram-notification
 https://cloud-infra.engineer/nagios-notifications-via-telegram/
 https://vnsys.wordpress.com/2018/10/04/nagios-gui-canh-bao-qua-telegram/
+https://www.youtube.com/watch?v=qwaMu6LlgWw&t=1678s
 ```
 
 ---------------------------------------------------------------------------------------
@@ -13,9 +14,19 @@ https://vnsys.wordpress.com/2018/10/04/nagios-gui-canh-bao-qua-telegram/
 > WARNING: This project is effectively retired, and won't be seeing any dev or support. There may be random commits in the future as we use it for side projects, but it's basically dead. There's plenty of other well maintained and feature rich (or feature lean) python TG libraries so you shouldn't have a problem finding another. Thanks for all the support and use in the past few years!
 
 - Do đó mình sẽ không dùng code python mà notifications trực tiếp bằng **curl**. [Tham khảo](https://gist.github.com/dideler/85de4d64f66c1966788c1b2304b9caf1).
+- Tham khảo tài liệu:
+```
+https://gist.github.com/SanariSan/4c7cca1aef10dfe0e27e55cfd97e9a53
+https://www.takersplace.de/2019/12/19/telegram-notifications-with-nagios/
+https://www.youtube.com/watch?v=aheLt0JHUEY
+https://core.telegram.org/bots/api#sending-files
+https://github.com/keepwalking86/nagios-core-4x/blob/master/docs/4.send-alert-via-email-telegram.md#telegram
+https://assets.nagios.com/downloads/nagioscore/docs/nagioscore/3/en/macrolist.html
+https://assets.nagios.com/downloads/nagioscore/docs/externalcmds/
+```
 
 ---------------------------------------------------------------------------------------
-### Setup Telegram
+## Setup Telegram
 - [Install Telegram on Ubuntu](https://snapcraft.io/telegram-desktop)
 ```
 sudo snap install telegram-desktop
@@ -36,70 +47,40 @@ chat id: 5018541524
 ```
 find / -name check_api
 ```
-- Ở đây mình tìm đc thư mục **/usr/local/nagios/libexec/**. Tạo script *nagios_telegram.sh*.
+- Do mình sẽ dùng **curl** để notifi nên mình cần biết ứng dụng này đang này ở đâu để từ đó add cho đúng câu lệnh.
+- Dùng lệnh: `which curl`, kết quả mình thu được là ở thư mục `/usr/bin/curl`.
+- Các thông tin mình có được là:
 ```
-touch nagios_telegram.sh
-sudo chmod 755 nagios_telegram.sh
-nano nagios_telegram.sh
-```
-- Add nội dung sau:
-```
-#!/bin/bash
-
 TOKEN="5654292386:AAHQVUr4Lqn66yIsKzX6p-YRmPVzKDD4m0M"
 ID="5018541524"
 URL="https://api.telegram.org/bot$TOKEN/sendMessage"
-
-if [ "$1" == "host" ]
-then
-# Test message
-# curl -s -X POST $URL -d chat_id=$ID -d text="Hello $1"
-	curl -s -X POST $URL -d chat_id=$ID -d text="***** Nagios ***** Notification Type: $NOTIFICATIONTYPE$ Host: $HOSTNAME$ State: $HOSTSTATE$ Address: $HOSTADDRESS$ Info: $HOSTOUTPUT$ Date/Time: $LONGDATETIME$" > /dev/null 2>&1
-	
-	exit 0
-else
-# Test message	
-# curl -X POST $URL -d chat_id=$ID -d text="Hello World"
-	curl -s -X POST $URL -d chat_id=$ID -d text="***** Nagios ***** Notification Type: $NOTIFICATIONTYPE$ Service: $SERVICEDESC$ Host: $HOSTALIAS$ Address: $HOSTADDRESS$ State: $SERVICESTATE$ Date/Time: $LONGDATETIME$ Additional Info: $SERVICEOUTPUT$" > /dev/null 2>&1
-	exit 0
-fi
 ```
-- Di chuyển file script sang thư mục */usr/local/nagios/libexec/*
+- Test bằng cách chạy trực tiếp lệnh, và xem thông báo trên **Telegram**:
 ```
-mv nagios_telegram.py /usr/local/nagios/libexec/
-cd /usr/local/nagios/libexec/
-ls -lh |grep nagios_telegram
+/usr/bin/curl -s -X POST "https://api.telegram.org/bot5654292386:AAHQVUr4Lqn66yIsKzX6p-YRmPVzKDD4m0M/sendMessage" -d chat_id="5018541524" -d text="Hello Guys"
 ```
-- Vào file *config*: 
+- Theo như các tài liệu mình tham khảo được trên mạng thì mình sẽ cần add các command này vào trong file **commands.cfg** của nagios (nó nằm ở thư mục `/usr/local/nagios/etc/`)
+- Tuy nhiên với version hiện tại mình đang dùng, thì nagios không cho chỉnh sửa trực tiếp trên file *commands.cfg* nữa, mà mình phải add thông qua **Config trên WebUI**.
+- Đăng nhập vào giao diện WebUI của Nagios, vào **Navigation** -> **Config** -> **Core Config Manager**.
+- Vào phần **Command** của "CCM Object Summary", chọn **Add new**.
+- Mình sẽ thực hiện tạo command cho host, thiết lập như sau:
 ```
-cd /usr/local/nagios/etc/
-nano commands.cfg
+Command Name: nagios_telegram_host
+Command Line: /usr/bin/curl -s -X POST "https://api.telegram.org/bot5654292386:AAHQVUr4Lqn66yIsKzX6p-YRmPVzKDD4m0M/sendMessage" -d chat_id="5018541524" -d text="***** Nagios ***** Notification Type: $NOTIFICATIONTYPE$ Host: $HOSTNAME$ State: $HOSTSTATE$ Address: $HOSTADDRESS$ Info: $HOSTOUTPUT$ Date/Time: $LONGDATETIME$" > /dev/null 2>&1
 ```
-- Add thêm nội dung:
+- Sau đó nhấn **Save** để Tương tự thực hiện thiết lập command cho service:
 ```
-# Host notification via Telegram bot
-define command {
-        command_name    notify-host-by-telegram
-        command_line    /usr/local/nagios/etc/nagios_telegram.sh host
-}
-
-# Service notification via Telegram bot
-define command {
-        command_name    notify-service-by-telegram
-        command_line    /usr/local/nagios/etc/nagios_telegram.sh service
-}
+Command Name: nagios_telegram_service
+Command Line: /usr/bin/curl -s -X POST "https://api.telegram.org/bot5654292386:AAHQVUr4Lqn66yIsKzX6p-YRmPVzKDD4m0M/sendMessage" -d chat_id="5018541524" -d text="***** Nagios ***** Notification Type: $NOTIFICATIONTYPE$ Service: $SERVICEDESC$ Host: $HOSTALIAS$ Address: $HOSTADDRESS$ State: $SERVICESTATE$ Date/Time: $LONGDATETIME$ Additional Info: $SERVICEOUTPUT$" > /dev/null 2>&1
 ```
-
-
-
-
-
-
-
-
-
-
-
+- Cũng **Save** để Nagios lưu lại cấu hình.
+ 
+## Test Command
+- Quay lại phần **Core Config Manager** -> **Hosts**.
+- Chọn thiết bị mà mình muốn test.
+- Sau đó xuống phần **Check_command** -> **nagios_telegram_host**. Sau đó nhấn **Save** lại. (Có thể nhấn vào "Run Command" để chạy thử).
+- Kết quả như hình **Result_Test.png**
+- **Note:** Trong *Host Status Detail*, phần *Overview*, mình có thể nhấn **Force an immediate check** để Nagios check và bắn ngay tin nhắn Telegram cho mình.
 
 
 
